@@ -33,7 +33,7 @@ var app = express();
 
 app.use(
     '/api',
-    proxy({ target: 'http://jiluxinqing.000webhostapp.com', changeOrigin: true })
+    httpProxyMiddleware({ target: 'http://jiluxinqing.000webhostapp.com', changeOrigin: true })
 );
 
 app.get('/', (req, res) => {
