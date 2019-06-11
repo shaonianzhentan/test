@@ -8,7 +8,7 @@ var proxyServer = http.createServer(function (req, res) {
     setTimeout(function () {
         if (req.url.indexOf('/api') == 0) {
             proxy.web(req, res, {
-                target: 'https://jiluxinqing.000webhostapp.com'
+                target: 'http://jiluxinqing.000webhostapp.com'
             });
         }else{
             proxy.web(req, res, {
