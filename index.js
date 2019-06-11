@@ -6,9 +6,15 @@ var proxy = new httpProxy.createProxyServer({
 });
 var proxyServer = http.createServer(function (req, res) {
     setTimeout(function () {
-        proxy.web(req, res, {
-            target: 'http://localhost:9008'
-        });
+        if (req.url.indexOf('/api') == 0) {
+            proxy.web(req, res, {
+                target: 'https://jiluxinqing.000webhostapp.com'
+            });
+        }else{
+            proxy.web(req, res, {
+                target: 'http://localhost:9008'
+            });
+        }        
     }, 500);
 });
 
