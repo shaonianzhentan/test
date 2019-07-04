@@ -1,11 +1,15 @@
-const http = require('http');
+const https = require('https');
+const fs = require('fs')
 const httpProxy = require('http-proxy');
 
 var proxy = new httpProxy.createProxyServer({
     target: 'ws://129.28.65.118:8123',
     ws: true
 });
-var proxyServer = http.createServer(function (req, res) {
+var proxyServer = https.createServer({
+    key: fs.readFileSync('1.key'),
+    cert: fs.readFileSync('1.crt')
+},function (req, res) {
     proxy.web(req, res, {
         target: 'http://129.28.65.118:8123'
     });
@@ -24,3 +28,5 @@ proxy.on('error', function(e) {
 });
 
 proxyServer.listen(443);
+
+console.log('Listen https://localhost:443')
