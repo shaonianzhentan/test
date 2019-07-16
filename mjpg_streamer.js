@@ -12,4 +12,4 @@ console.log(`${new Date().toLocaleString()}开启服务`)
 
 setInterval(() => {
     console.log('test')
-}, 8000000000)
+}, 60000 * 60)
