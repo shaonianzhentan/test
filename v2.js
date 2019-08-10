@@ -1,8 +1,13 @@
 const http = require('http');
 const httpProxy = require('http-proxy');
 var express = require('express');
-const request = require('request');
+var request = require('request');
+var cors = require('cors');
 var httpProxyMiddleware = require('http-proxy-middleware');
+
+function log() {
+  console.log(new Date().toLocaleString(), ...arguments)
+}
 
 var proxy = new httpProxy.createProxyServer({
   target: 'ws://localhost:46514',
@@ -31,26 +36,26 @@ proxyServer.listen(80);
 //
 
 var app = express();
-
+app.use(cors())
 app.use(
   '/api',
   httpProxyMiddleware({ target: 'http://jiluxinqing.000webhostapp.com', changeOrigin: true })
 );
 
 app.get('/', (req, res) => {
-
   res.send('123456')
 })
 
-app.post('/', (req, res) => {
-  request(req.body, function (err, response, body) {
+app.get('/proxy', (req, res) => {
+  let body = JSON.parse(decodeURIComponent(req.query.body))
+  log(body)
+  request(body, function (err, response, body) {
     if (err) {
       res.status(500).send(err);
     }
     res.send(body)
   })
 })
-
 
 app.listen(9008);
 
