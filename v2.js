@@ -1,6 +1,7 @@
 const http = require('http');
 const httpProxy = require('http-proxy');
 var express = require('express');
+const request = require('request');
 var httpProxyMiddleware = require('http-proxy-middleware');
 
 var proxy = new httpProxy.createProxyServer({
@@ -37,8 +38,19 @@ app.use(
 );
 
 app.get('/', (req, res) => {
+
   res.send('123456')
 })
+
+app.post('/', (req, res) => {
+  request(req.body, function (err, response, body) {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.send(body)
+  })
+})
+
 
 app.listen(9008);
 
