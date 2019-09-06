@@ -10,7 +10,7 @@ function log() {
 }
 
 var proxy = new httpProxy.createProxyServer({
-  target: 'ws://localhost:46514',
+  target: 'ws://localhost:2333',
   ws: true
 });
 var proxyServer = http.createServer(function (req, res) {
