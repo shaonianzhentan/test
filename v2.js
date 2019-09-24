@@ -36,6 +36,12 @@ proxyServer.listen(80);
 //
 
 var app = express();
+var bodyParser = require('body-parser');
+// 解析 application/json
+app.use(bodyParser.json());
+// 解析 application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded());
+
 app.use(cors())
 app.use(
   '/api',
@@ -46,8 +52,8 @@ app.get('/', (req, res) => {
   res.send('123456')
 })
 
-app.get('/proxy', (req, res) => {
-  let body = JSON.parse(decodeURIComponent(req.query.body))
+app.post('/proxy', (req, res) => {
+  let body = req.body
   log(body)
   request(body, function (err, response, body) {
     if (err) {
