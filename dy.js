@@ -3,6 +3,7 @@ const zlib = require('zlib');
 
 
 module.exports = function (page = 0) {
+  console.log(page)
   return new Promise((resolve, reject) => {
     request(`https://www.tiktok.com/share/item/list?secUid=&id=&type=5&count=5&minCursor=${page}&maxCursor=1000001519326&shareUid=&_signature=oUeATAAgEBNNe.t-VaJovaFHgVAAPyP`, {
       headers: {
