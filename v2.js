@@ -49,7 +49,7 @@ app.use(
 );
 
 
-const dyApi = request('./dy')
+const dyApi = require('./dy.js')
 app.get('/', (req, res) => {
   dyApi().then((data) => {
     res.json(data)
