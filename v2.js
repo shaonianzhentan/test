@@ -50,8 +50,8 @@ app.use(
 
 
 const dyApi = require('./dy.js')
-app.get('/', (req, res) => {
-  dyApi().then((data) => {
+app.get('/', (req, res) => {  
+  dyApi(req.query.page).then((data) => {
     res.json(data)
   }).then(err => {
     res.send(err)

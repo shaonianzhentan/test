@@ -2,13 +2,11 @@ const request = require('request');
 const zlib = require('zlib');
 
 
-module.exports = function () {
-
+module.exports = function (page = 0) {
   return new Promise((resolve, reject) => {
-    request('https://www.tiktok.com/share/item/list?secUid=&id=&type=5&count=5&minCursor=0&maxCursor=1000001519326&shareUid=&_signature=oUeATAAgEBNNe.t-VaJovaFHgVAAPyP', {
+    request(`https://www.tiktok.com/share/item/list?secUid=&id=&type=5&count=5&minCursor=${page}&maxCursor=1000001519326&shareUid=&_signature=oUeATAAgEBNNe.t-VaJovaFHgVAAPyP`, {
       headers: {
         'authority': 'www.tiktok.com',
-        'path': '/share/item/list?secUid=&id=&type=5&count=5&minCursor=0&maxCursor=1000001519326&shareUid=&_signature=oUeATAAgEBNNe.t-VaJovaFHgVAAPyP'
         , 'scheme': 'https'
         , 'accept': 'application/json, text/plain, */*'
         , 'accept-encoding': 'gzip, deflate, br'
