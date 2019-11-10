@@ -27,7 +27,7 @@ module.exports = function () {
       if (!err) {
         zlib.unzip(body, function (err, buffer) {
           //console.log()
-          resolve(buffer.toString())
+          resolve(JSON.parse(buffer.toString()))
         })
       } else {
         reject(err)
