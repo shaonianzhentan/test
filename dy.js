@@ -7,8 +7,7 @@ module.exports = function (page = 0) {
     request(`https://www.tiktok.com/share/item/list?secUid=&id=&type=5&count=5&minCursor=${page}&maxCursor=1000001519326&shareUid=&_signature=oUeATAAgEBNNe.t-VaJovaFHgVAAPyP`, {
       headers: {
         'authority': 'www.tiktok.com',
-        , 'scheme': 'https'
-        , 'accept': 'application/json, text/plain, */*'
+        'scheme': 'https', 'accept': 'application/json, text/plain, */*'
         , 'accept-encoding': 'gzip, deflate, br'
         , 'accept-language': 'zh-CN,zh;q=0.9'
         , 'cache-control': 'no-cache'
