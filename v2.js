@@ -48,14 +48,8 @@ app.use(
   httpProxyMiddleware({ target: 'http://jiluxinqing.000webhostapp.com', changeOrigin: true })
 );
 
-
-const dyApi = require('./dy.js')
-app.get('/', (req, res) => {  
-  dyApi(req.query.page).then((data) => {
-    res.json(data)
-  }).then(err => {
-    res.send(err)
-  })
+app.get('/', (req, res) => {
+  res.send('没有东东')
 })
 
 app.post('/proxy', (req, res) => {
