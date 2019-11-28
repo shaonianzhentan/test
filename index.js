@@ -41,3 +41,19 @@ proxy.on('error', function (e) {
 proxyServer.listen(443);
 
 console.log('Listen https://localhost:443')
+
+
+
+var http = require("http");
+var server = http.createServer(function (req, res) {
+    if (req.url == "/") {
+        res.end("Hello world!");
+    }
+    if(req.url === '/.well-known/pki-validation/fileauth.txt'){
+        res.writeHead(200);
+        res.end('20191127034119359z6vv8nwp3rge577q55j6374nk8kk0ez413lu3kw14cnthz4');
+        return
+    }
+});
+
+server.listen(80);
