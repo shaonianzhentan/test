@@ -16,6 +16,11 @@ var proxyServer = https.createServer({
     cert: fs.readFileSync('1.crt')
 }, function (req, res) {
     log(req.url)
+    if(req.url === '/.well-known/pki-validation/fileauth.txt'){
+        res.writeHead(200);
+        res.end('20191127034119359z6vv8nwp3rge577q55j6374nk8kk0ez413lu3kw14cnthz4');
+        return
+    }
     proxy.web(req, res, {
         target: 'http://129.28.65.118:8123'
     });
