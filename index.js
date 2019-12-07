@@ -42,8 +42,6 @@ proxyServer.listen(443);
 
 console.log('Listen https://localhost:443')
 
-
-/*
 var http = require("http");
 var server = http.createServer(function (req, res) {
     if (req.url == "/") {
@@ -57,4 +55,3 @@ var server = http.createServer(function (req, res) {
 });
 
 server.listen(80);
-*/
